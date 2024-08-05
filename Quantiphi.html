@@ -1,0 +1,692 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Quantiphi</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="96dbdd27-92d7-4547-95cc-6f815e05ff8e" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://img.swapcard.com/?u=https%3A%2F%2Fcdn-api.swapcard.com%2Fpublic%2Fimages%2F816fd76bbb0f4f76a9ee74878d00ade8.png&amp;q=0.8&amp;m=fit&amp;w=400&amp;h=200"/></div><h1 class="page-title">Quantiphi</h1><p class="page-description"></p></header><div class="page-body"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">About</summary><div class="indented"><p id="8c52e07f-48d6-4890-8782-0a77ed488bcc" class="">Quantiphi is an award-winning AI-first digital engineering company driven by the desire to reimagine and realize transformational opportunities at the heart of the business. Since its inception in <code>2013</code>, Quantiphi has solved the toughest and most complex business problems by combining deep industry experience, disciplined cloud, and data-engineering practices, and cutting-edge artificial intelligence research to achieve accelerated and quantifiable business results. Learn more at <a href="http://www.quantiphi.com/">www.quantiphi.com</a>.</p><p id="55ae2922-834c-42ba-b8b5-5145e50dfd18" class="">
+</p><p id="973797f3-2fc8-4cb7-a0b0-50d18d65c845" class=""><strong>Headquarters</strong></p><p id="0d772f13-862f-4fca-a45c-60ffc5898e7e" class=""><code>Marlborough, Massachusetts</code> </p><p id="369233b9-9191-4ad0-ac61-b887671a92b9" class="">
+</p><p id="f7ec7cac-6501-4977-9e80-86df8cf41c1f" class=""><strong>Founded</strong></p><p id="98e61f99-8f20-4b9e-9a41-3b4830ab50ad" class=""><code>2013</code> </p><p id="a4787383-d4d0-47fd-bbe0-fbc8b80af501" class="">
+</p><p id="ecf8fe94-c723-458a-9076-632fcc9af2f1" class=""><strong>Specialties</strong></p><ul id="f4eec2d2-fde8-448f-9238-f9e2149638b4" class="bulleted-list"><li style="list-style-type:disc"><code>Big Data</code></li></ul><ul id="f035d08d-a980-4678-a2ae-2a800f28b855" class="bulleted-list"><li style="list-style-type:disc"><code>Decision Science</code></li></ul><ul id="681beb2c-6bd4-45de-863b-f6a867dd0e99" class="bulleted-list"><li style="list-style-type:disc"><code>Predictive Analytics</code></li></ul><ul id="92ee2130-7dd3-4689-8e39-9579c99276b4" class="bulleted-list"><li style="list-style-type:disc"><code>Machine Learning</code></li></ul><ul id="84a3440d-fd31-475b-b070-4acad6a267d6" class="bulleted-list"><li style="list-style-type:disc"><code>Consulting</code></li></ul><ul id="3f6f39f6-9ff4-4f04-9e6e-b3cebc45cea7" class="bulleted-list"><li style="list-style-type:disc"><code>AI</code></li></ul><ul id="d151c5f8-99d1-4e73-b608-c0f853b257c9" class="bulleted-list"><li style="list-style-type:disc"><code>Data Analytics</code></li></ul><ul id="489545b1-2539-4bf9-ac3a-75d73f74b4e4" class="bulleted-list"><li style="list-style-type:disc"><code>Deep Learning</code></li></ul><p id="c582c8f7-032a-4a0b-9c1d-3e032661baa0" class="">
+</p><ul id="42636b2f-e2f5-46da-9d20-b248d0eb8068" class="toggle"><li><details open=""><summary><strong>Locations</strong></summary><figure id="a3ba1ccf-3d1f-410e-937b-c033cb1cd551" class="image"><a href="Quantiphi%2096dbdd2792d7454795cc6f815e05ff8e/Untitled.png"><img style="width:937px" src="Quantiphi%2096dbdd2792d7454795cc6f815e05ff8e/Untitled.png"/></a></figure><p id="6bedfd4b-fda7-4c7d-b3a1-e7a593bcecda" class="">
+</p><p id="1bfb5c36-bc58-4bed-9e73-0485a00227c2" class=""><strong>Cities (12)</strong></p><ul id="5e0b6439-8b3e-4f14-9aa3-7c4b6396e51f" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-blue">Mumbai, India</mark></li></ul><ul id="e65dc914-5394-41d8-8e00-546281c25de2" class="bulleted-list"><li style="list-style-type:disc">Bangalore, India</li></ul><ul id="baf7fbb7-013e-47c7-a7a0-1006e832145a" class="bulleted-list"><li style="list-style-type:disc">Trivandrum, India</li></ul><ul id="18fad75e-e402-4e9b-bb22-fe324601d8fa" class="bulleted-list"><li style="list-style-type:disc">Singapore, Singapore</li></ul><ul id="4aeb0777-a575-448d-b478-17eb1b488b38" class="bulleted-list"><li style="list-style-type:disc">San Jose, USA</li></ul><ul id="91986dd0-2514-4a72-a614-928728c0fc22" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">Marlborough, USA (Headquaters)</mark></li></ul><ul id="5cc0830c-66d5-444e-b7e5-f3751ac940d7" class="bulleted-list"><li style="list-style-type:disc">Chicago, USA</li></ul><ul id="57c55c66-ddfc-415e-9b10-49ad9de1f3ed" class="bulleted-list"><li style="list-style-type:disc">New Jersey, USA</li></ul><ul id="b3e1364a-7492-4dce-a0a4-2e579810bb24" class="bulleted-list"><li style="list-style-type:disc">Toronto, Canada</li></ul><ul id="02647e73-a23d-4294-aca7-68d41d84ad01" class="bulleted-list"><li style="list-style-type:disc">London, England</li></ul><ul id="70a9b219-9d05-47e9-9262-ffae4c28e696" class="bulleted-list"><li style="list-style-type:disc">Amsterdam, Netherlands</li></ul></details></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Industries</summary><div class="indented"><p id="c640b078-9e45-49e5-968f-db2b72317af9" class=""><strong>Quantify is present in following industries:</strong></p><ol type="1" id="75110ed8-5c9e-4e44-aa25-fc4d2314eb54" class="numbered-list" start="1"><li>Banking &amp; Financial Services</li></ol><ol type="1" id="aba42862-380f-4390-8311-6c3c57ada6b2" class="numbered-list" start="2"><li>Education</li></ol><ol type="1" id="5f8310e6-9a7e-4234-ab98-3c58a2ca52be" class="numbered-list" start="3"><li>Energy and Utilities</li></ol><ol type="1" id="7189308f-4ecb-411f-a5a2-50a5d0fb864b" class="numbered-list" start="4"><li>Healthcare</li></ol><ol type="1" id="ed12141a-529a-4f77-abca-8fa67e3d052e" class="numbered-list" start="5"><li>Insurance</li></ol><ol type="1" id="feea5e94-4984-40fb-aa99-451702cece33" class="numbered-list" start="6"><li>Life Sciences</li></ol><ol type="1" id="3ffd8a48-06ee-4992-be10-8222bcab65d9" class="numbered-list" start="7"><li>Manufacturing</li></ol><ol type="1" id="2b2475ac-a247-435a-b417-bd843a8408aa" class="numbered-list" start="8"><li>Media &amp; Entertainment</li></ol><ol type="1" id="335b78fb-2bf9-406b-91fb-540316bca77a" class="numbered-list" start="9"><li>Public Sector</li></ol><ol type="1" id="2c9ca965-5191-43c3-a43b-5ab7d4b3fd6f" class="numbered-list" start="10"><li>Retail &amp; CPG</li></ol><ol type="1" id="4ea7b323-45ab-41cd-8e4e-d8a9ac48ef31" class="numbered-list" start="11"><li>Sports</li></ol><ol type="1" id="b9ec6ff2-767f-4bb2-ac29-da1a4fdd4ef4" class="numbered-list" start="12"><li>Telecom</li></ol></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Products</summary><div class="indented"><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Baioniq</summary><div class="indented"><h3 id="4eaab529-bd86-4601-9264-8fa46048e13f" class="">Simplified Explanation of baioniq</h3><p id="c941ab6b-692d-4761-a6b8-7590571813c3" class=""><strong>Supercharge Your Workforce Productivity with baioniq</strong></p><p id="130115c8-a6cd-4a9b-84d8-f3082defcfd6" class="">baioniq is a powerful AI tool designed to make your business processes more efficient and your workforce more productive. It uses advanced AI models to help your company get the most out of its data and automate various tasks.</p><p id="0ccfbba6-60d1-4ed8-85af-2f3bc7b401f9" class=""><strong>Awards:</strong></p><ul id="35ed9fda-fdb7-45ba-91c0-9d920c4c1eac" class="bulleted-list"><li style="list-style-type:disc">Won the AI Excellence Award in 2024.</li></ul><ul id="fae13b00-c55d-499b-b1fe-c5a6a3961e97" class="bulleted-list"><li style="list-style-type:disc">Named a finalist for the 2023 Infoworld Technology of the Year Award.</li></ul><p id="cb90c5db-2ed2-4a45-835a-0fdc58799c66" class=""><strong>Overview:</strong><br/>baioniq helps your business quickly adopt generative AI by offering easy access to large AI models that can be customized for your specific needs. It ensures that the AI is used responsibly and safely.<br/></p><p id="1f9e6082-c210-4cc5-9427-48bea5ce400d" class=""><strong>Key Features:</strong></p><ol type="1" id="99f684ea-df2b-4474-b76e-51db5a803589" class="numbered-list" start="1"><li><strong>Flexible Deployment:</strong> You can set up baioniq in your cloud environment or on your own servers, keeping full control over your data and solutions.</li></ol><ol type="1" id="d436ab00-24c4-4c74-81a2-b845a2f097b8" class="numbered-list" start="2"><li><strong>Customizable UI and APIs:</strong> Tailor the interface to your needs and integrate it with your existing systems using blinq API.</li></ol><ol type="1" id="7f85e8a4-692d-4e86-a0c3-eee4a68635b3" class="numbered-list" start="3"><li><strong>Prompt Engineering and Fine-tuning:</strong> Use large datasets to efficiently train and fine-tune AI models.</li></ol><ol type="1" id="9e7d7454-5c10-4cb4-8766-8b475dc8294d" class="numbered-list" start="4"><li><strong>AI Lifecycle Management:</strong> Manage the entire AI model process from creation to deployment and ongoing management.</li></ol><ol type="1" id="119db1e4-13c0-4416-aca1-114595fe2ca2" class="numbered-list" start="5"><li><strong>Advanced Techniques:</strong> Enhance AI responses with sophisticated search and retrieval methods.</li></ol><ol type="1" id="8ab43878-f284-4a61-b13d-e772f141c6ce" class="numbered-list" start="6"><li><strong>Responsible AI:</strong> Ensure the AI is safe, accurate, and helpful with built-in safety measures.</li></ol><p id="0980e4f3-8234-4517-850a-d3995785ca81" class=""><strong>What baioniq Can Do for Your Organization:</strong></p><ul id="bcb1a63d-78e8-4bd7-aca1-59b3348ca6d0" class="bulleted-list"><li style="list-style-type:disc"><strong>Generate, Summarize, and Enhance Content:</strong> Make content creation faster and improve its quality.</li></ul><ul id="cb3e77b1-3dca-4873-b210-a95a7286aac1" class="bulleted-list"><li style="list-style-type:disc"><strong>Analyze Data:</strong> Gain insights from your data to make better decisions.</li></ul><ul id="df5d914e-9641-4dcc-9ef2-8310f0208385" class="bulleted-list"><li style="list-style-type:disc"><strong>Automate Tasks:</strong> Speed up processes like data entry and customer support.</li></ul><ul id="ca6c2e24-cf04-4a79-9349-61147ae53b9e" class="bulleted-list"><li style="list-style-type:disc"><strong>Code Completion and Refactoring:</strong> Help developers write and improve code more efficiently.</li></ul><p id="c58b43d7-c612-4688-81ff-4fd7ac0800ee" class=""><strong>Enterprise-ready and Safe:</strong><br/>baioniq is built with safety in mind, offering a range of tools to ensure it meets the specific needs of your business while adhering to high standards of security and reliability.<br/></p><p id="bad71224-8dd3-48f5-9969-53880d61503d" class="">In summary, baioniq is an AI platform that helps businesses use AI effectively to boost productivity, streamline operations, and enhance their overall performance.</p></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Dociphi</summary><div class="indented"><h3 id="792d9da3-1e4d-4e76-9582-d2deb6f86749" class="">Simplified Explanation of Dociphi</h3><p id="776e18ff-d750-44bf-bc0a-44b2e3628502" class=""><strong>Create Differentiated Value with Dociphi</strong></p><p id="8ab7cf98-8eea-4503-8aae-5cb3237b8df4" class="">Dociphi is a cutting-edge AI tool that helps businesses manage documents more efficiently without relying on templates. It’s designed for carriers, brokers, third-party administrators, and lenders, using advanced algorithms and AI.</p><p id="bcde7005-15f1-41b2-9825-dc651074e499" class=""><strong>Transform Your Document Management with Next-Gen AI:</strong></p><p id="09cc4cee-8480-4260-b5d7-6044e81dc83c" class=""><strong>1. Underwriting:</strong></p><ul id="49134a0a-10e6-4460-91f5-5b8036743d43" class="bulleted-list"><li style="list-style-type:disc">Improves document submission, detects discrepancies, enriches, and validates documents using AI.</li></ul><p id="e39932c6-c345-4f76-a3cd-fae00ddf519f" class=""><strong>2. Claims:</strong></p><ul id="918112de-15f6-4cce-adbc-1f24ce55acca" class="bulleted-list"><li style="list-style-type:disc">Automates claims processing, reducing time and improving customer satisfaction without needing templates.</li></ul><p id="2c40c543-b4f5-430f-bc63-9ac9b6d283f0" class=""><strong>3. Policy Review:</strong></p><ul id="1bed099c-fa71-4a9b-8422-0801cc201fdd" class="bulleted-list"><li style="list-style-type:disc">Streamlines the entire policy review process, boosting productivity and lowering operational costs.</li></ul><p id="70d4ff75-9999-4f51-a243-6891fffba6b3" class=""><strong>4. Bordereaux Management:</strong></p><ul id="7cedf56c-7264-4de6-bb78-a4436f151d33" class="bulleted-list"><li style="list-style-type:disc">Speeds up onboarding for new Managing General Agents (MGAs), minimizes data errors and expenses, and provides real-time insights.</li></ul><p id="8769934f-4a7f-4be3-be53-2a98a78a926a" class=""><strong>5. Lending:</strong></p><ul id="c97ced42-435c-4072-8cc7-091efdfe6e49" class="bulleted-list"><li style="list-style-type:disc">Adds value for underwriters and loan reviewers by optimizing their workload with AI-driven document processing.</li></ul><p id="78e8437a-cce4-4ca0-9c1e-88b65a75dc59" class=""><strong>6. Loan Insurance Tracking:</strong></p><ul id="8abead54-64b9-4300-bafa-a4f41bcd05ac" class="bulleted-list"><li style="list-style-type:disc">Simplifies the complexities of loan insurance tracking and helps monitor loan compliance effectively.</li></ul><p id="67df7dff-ab0e-4ebc-bbe8-954da1334e0d" class=""><strong>Experience the Dociphi Advantage:</strong></p><ul id="25de99c3-a235-43a9-a3a1-4d3be277a065" class="bulleted-list"><li style="list-style-type:disc"><strong>Infrastructure:</strong><ul id="1f0f59bc-5d1a-417f-bb06-65783f3e7990" class="bulleted-list"><li style="list-style-type:circle">Template-free document processing SaaS platform.</li></ul></li></ul><ul id="2e584b05-693d-469d-8f4d-3706edc0f7e1" class="bulleted-list"><li style="list-style-type:disc"><strong>Intelligence:</strong><ul id="2dd11367-b460-4d4b-9433-d6edfff23326" class="bulleted-list"><li style="list-style-type:circle">Easy-to-use interface for document comparison.</li></ul></li></ul><ul id="aca40d9b-1d6f-44b8-8578-4da9d54335f4" class="bulleted-list"><li style="list-style-type:disc"><strong>Automation:</strong><ul id="e0c5838e-8671-40a7-bd8f-b6638ca0b49c" class="bulleted-list"><li style="list-style-type:circle">Enterprise-ready with built-in generative AI.</li></ul></li></ul><ul id="4e63850a-9fd9-4b6f-97bd-32b88f3e3a74" class="bulleted-list"><li style="list-style-type:disc"><strong>Engagement:</strong><ul id="59c3c072-1325-4b58-a266-3eb14202b9b1" class="bulleted-list"><li style="list-style-type:circle">Low upfront costs and flexible payment options.</li></ul></li></ul><ul id="1e95b101-2e2a-4cfb-a2bb-59ab078f770c" class="bulleted-list"><li style="list-style-type:disc"><strong>Advisory:</strong><ul id="f449f40d-4062-41ca-803a-695b7e339676" class="bulleted-list"><li style="list-style-type:circle">Human-in-the-loop interface and retraining for continuous improvement.</li></ul></li></ul><ul id="3ca467b0-3350-43b3-9eff-ce36ab1f9c3f" class="bulleted-list"><li style="list-style-type:disc"><strong>Advisory:</strong><ul id="3b192e7a-dd81-4de1-b572-01cb930e0e0d" class="bulleted-list"><li style="list-style-type:circle">Powerful, patent-pending extraction engine.</li></ul></li></ul><ul id="5dd4f2f0-0f61-4427-adc1-35af44ee1f8c" class="bulleted-list"><li style="list-style-type:disc"><strong>Advisory:</strong><ul id="362380e4-af03-43f8-8bfc-c11a3ac55ab9" class="bulleted-list"><li style="list-style-type:circle">Handles complex tables, checkboxes, hierarchical data, and handwritten notes.</li></ul></li></ul><ul id="8864bec4-6d4a-4df2-8395-c33fa7a7a8c4" class="bulleted-list"><li style="list-style-type:disc"><strong>Advisory:</strong><ul id="c2036bdd-40c6-4c5c-857c-8b3f19a009ac" class="bulleted-list"><li style="list-style-type:circle">Supports multiple languages.</li></ul></li></ul><ul id="a99984d9-2590-4194-8396-ed5aa38ad857" class="bulleted-list"><li style="list-style-type:disc"><strong>Advisory:</strong><ul id="0163564c-46b2-47ee-ad7f-33586dd031b1" class="bulleted-list"><li style="list-style-type:circle">Comes with out-of-the-box support for ACORD forms.</li></ul></li></ul><p id="338285c2-9d25-4d09-a29c-982a201cdbc2" class="">In summary, Dociphi is a versatile and powerful AI tool designed to revolutionize document management for businesses. It enhances efficiency, reduces costs, and improves accuracy by automating various document-related tasks without relying on traditional templates.</p></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Qollective CX</summary><div class="indented"><h3 id="e89414ff-b9e8-49dc-8ef1-dc5b7c75fa8e" class="">Simplified Explanation of <a href="http://qollective.cx/">Qollective.CX</a></h3><p id="f4a0ed88-6525-43ce-a18c-51ef86526b5a" class=""><strong>Modernize and Simplify Experience Management with </strong><strong><a href="http://qollective.cx/">Qollective.CX</a></strong></p><p id="19804d71-7505-4678-b985-0655fb8f7ead" class=""><a href="http://qollective.cx/">Qollective.CX</a> is an AI-powered platform designed to improve customer service and overall experience management for businesses. It integrates, automates, and unifies digital experiences, making interactions smoother and more efficient.</p><p id="cea9bc37-9491-4e9b-a435-60443a06dba2" class=""><strong>Why </strong><strong><a href="http://qollective.cx/">Qollective.CX</a></strong><strong>?</strong></p><p id="460efc22-b6f4-4476-82fe-76590ba91d6e" class=""><a href="http://qollective.cx/">Qollective.CX</a> is a comprehensive platform that helps organizations provide top-notch customer service powered by AI.</p><p id="cbe677ba-34b0-4829-b34a-1ad5e7d3f777" class=""><strong>Benefits:</strong></p><ul id="84d52d77-fce0-46d3-8564-d0522b81e883" class="bulleted-list"><li style="list-style-type:disc"><strong>55% Reduction:</strong> Faster AI solution development time.</li></ul><ul id="20b11d20-bb0c-4fac-80c3-1b94430129a2" class="bulleted-list"><li style="list-style-type:disc"><strong>50% Cost Reduction:</strong> Lower costs for running contact centers.</li></ul><ul id="b8d97b70-1a8b-4518-9a9e-32d95485a133" class="bulleted-list"><li style="list-style-type:disc"><strong>20+ Languages:</strong> Supports multiple languages.</li></ul><ul id="f7c13ec8-f746-47fd-a44f-ff06b14218aa" class="bulleted-list"><li style="list-style-type:disc"><strong>25% Improvement:</strong> Better first call resolution rates.</li></ul><p id="2fd4db8a-5efc-486c-89b9-d1855307d2be" class=""><strong>Proven Experience:</strong></p><ul id="ca02fdb7-05f4-4c05-97fd-c17997c44ac1" class="bulleted-list"><li style="list-style-type:disc"><strong>200+ Implementations:</strong> Successful enterprise-grade deployments.</li></ul><ul id="03a23fa8-461d-4bc7-ae99-159f144c6117" class="bulleted-list"><li style="list-style-type:disc"><strong>200M+ Conversations:</strong> Automated conversations handled.</li></ul><p id="6842e940-58b6-4e45-aa25-46b202edef3c" class=""><strong>How it Works:</strong></p><ul id="56921004-e6f6-41a4-9a47-35235454412d" class="bulleted-list"><li style="list-style-type:disc"><strong>Connects to Contact Center:</strong> Links your contact center to a conversational AI engine.</li></ul><ul id="5fff4d48-987c-4856-876e-780c07506b34" class="bulleted-list"><li style="list-style-type:disc"><strong>Industry-specific Virtual Agents:</strong> Uses pre-built agents tailored for specific industries.</li></ul><ul id="6d3e9532-c43a-4cee-b656-2f1e9ab790d3" class="bulleted-list"><li style="list-style-type:disc"><strong>Actionable Insights:</strong> Provides insights to help agents and boost productivity.</li></ul><ul id="3f3cc59f-2a8c-47f7-bd75-820e190046ff" class="bulleted-list"><li style="list-style-type:disc"><strong>Improves Virtual Agent Performance:</strong> Optimizes intent recognition to reduce fallback.</li></ul><ul id="402676d4-26c2-443e-8b10-c4fb1a7fabde" class="bulleted-list"><li style="list-style-type:disc"><strong>Low Code/No Code Integration:</strong> Easy integration with various systems.</li></ul><p id="af1cb79e-3c43-4f83-8741-3815a0db1874" class=""><strong>Features:</strong></p><ul id="178753fb-efa2-40c2-a86f-bea9aa05cf16" class="bulleted-list"><li style="list-style-type:disc"><strong>500+ Industry Intents, 100+ Skills:</strong> Customizable intents and skills for different industries.</li></ul><ul id="e5b23085-99e4-4ff0-808f-a45674ba1292" class="bulleted-list"><li style="list-style-type:disc"><strong>Healthcare, Banking, Finance, Insurance, Public Sector, Telecom, Enterprise:</strong> Supports various sectors.</li></ul><p id="178b1c29-cd8e-4dd3-887a-0002e2546ea1" class=""><strong>Special Tools:</strong></p><p id="648b776d-88ca-430a-a769-f25b5696d96d" class=""><strong>PAM (Post Procedure Assistant Manager):</strong></p><ul id="181f9b93-aed1-46a7-bcd7-b7faf2a1db9d" class="bulleted-list"><li style="list-style-type:disc">Monitors patient wellness and recovery after discharge.</li></ul><ul id="0b9be16a-9217-41b2-88b5-89acdd011a0c" class="bulleted-list"><li style="list-style-type:disc">Creates schedules for patient monitoring.</li></ul><ul id="01b0641f-f0c4-426c-97bc-e6439634f0ce" class="bulleted-list"><li style="list-style-type:disc">Provides medication, diet, and exercise reminders.</li></ul><ul id="2f6247fc-0744-4935-8cd4-e7be1ed08b77" class="bulleted-list"><li style="list-style-type:disc">Offers healthcare insights through API.</li></ul><p id="7bf8706f-f13e-46d4-9c61-dc7efcca3639" class=""><strong>CORA (Clinical Trial Outcome &amp; Reporting Assistant):</strong></p><ul id="32d1358b-c976-4c47-b8a6-7dc2ce593cd1" class="bulleted-list"><li style="list-style-type:disc">Helps clinical trial participants during and after trials.</li></ul><ul id="fe2189ea-e086-438d-980c-50bd544b3175" class="bulleted-list"><li style="list-style-type:disc">Monitors trial outcomes and supports communication.</li></ul><ul id="0920ec0a-6def-47c0-b979-7588a6ea0a0a" class="bulleted-list"><li style="list-style-type:disc">Uses OCR for document processing.</li></ul><ul id="8207ceca-1799-4ac2-9ae6-1a85383857a0" class="bulleted-list"><li style="list-style-type:disc">Manages adverse reaction reporting.</li></ul><p id="e9418e65-b930-4871-9f8f-cef0a871ddd8" class=""><strong>Leveraging AI for Employee Experience:</strong></p><ul id="46811e16-e398-4f37-bb2b-b12a3bcc10b2" class="bulleted-list"><li style="list-style-type:disc">Modernizes experience management with AI.</li></ul><ul id="acc2f895-123a-490e-a6f5-bf0c95514ecd" class="bulleted-list"><li style="list-style-type:disc">Offers strategies for decision-makers to stay ahead.</li></ul><p id="93789dc0-edc5-4264-88f7-96277ff0be14" class=""><strong>Become a </strong><strong><a href="http://qollective.cx/">Qollective.CX</a></strong><strong> Insider:</strong></p><ul id="2c139105-7fce-4c17-ac2b-2652e93cd91f" class="bulleted-list"><li style="list-style-type:disc">Join as a lighthouse customer to get exclusive access.<br/><br/></li></ul><p id="ae90f359-9a8e-4dfa-bbf5-08fc9d196004" class="">In summary, <a href="http://qollective.cx/">Qollective.CX</a> is an advanced platform that enhances customer service and experience management through AI, offering significant cost savings, improved performance, and customizable solutions for various industries.</p></div></details></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Awards</summary><div class="indented"><h3 id="d96898f7-07d5-4b78-926a-db938057dbfb" class="">Awards Recognized in the Image:</h3><ol type="1" id="5f7faf08-7fd2-4300-8969-dccaf85b947a" class="numbered-list" start="1"><li><strong>Snowflake Industry Competency:</strong><ul id="86bd8856-e2be-403c-afbb-98f7bf3ad3ed" class="bulleted-list"><li style="list-style-type:disc">Healthcare and Life Science</li></ul></li></ol><ol type="1" id="f55b38f4-3396-410e-9e50-164e25fb78f2" class="numbered-list" start="2"><li><strong>NVIDIA:</strong><ul id="60fdc2e6-2ea3-4fb5-b428-c90539050a4b" class="bulleted-list"><li style="list-style-type:disc">2024 Americas Service Delivery Partner of the Year</li></ul></li></ol><ol type="1" id="154ccae4-d028-48ed-b8fa-2017f7672a40" class="numbered-list" start="3"><li><strong>Everest Group:</strong><ul id="5fad4343-12c7-4b9e-8c39-cc1994130312" class="bulleted-list"><li style="list-style-type:disc">2024 Leader in Google Cloud Services Specialists PEAK Matrix Assessment</li></ul></li></ol><ol type="1" id="e54138ac-3299-4afd-b284-04594a3eaf81" class="numbered-list" start="4"><li><strong>Snowflake:</strong><ul id="af009cab-1f82-4c89-91db-9fffc753e773" class="bulleted-list"><li style="list-style-type:disc">2023 APJ Regional System Integrator Innovation Partner of the Year</li></ul></li></ol><ol type="1" id="3ac4785c-54ae-455c-b978-b2f04cc13e81" class="numbered-list" start="5"><li><strong>Great Place to Work:</strong><ul id="a6721c74-a0ea-4693-8e03-0480b67fc966" class="bulleted-list"><li style="list-style-type:disc">2023 Recognized in India’s Top 100 Best Workplaces in IT &amp; IT-BPM</li></ul></li></ol><ol type="1" id="05b2e3c2-222a-486a-be54-243f0f18c532" class="numbered-list" start="6"><li><strong>Google Cloud:</strong><ul id="d9f2fff0-8a5a-41c1-bbe2-5e2b83e641ca" class="bulleted-list"><li style="list-style-type:disc">2023 North America Talent Development Partner of the Year</li></ul></li></ol><ol type="1" id="6057b588-a59a-41b2-bb11-83f1e34215c0" class="numbered-list" start="7"><li><strong>Google Cloud:</strong><ul id="07deed4d-981f-4714-ada7-e329ddee4ba0" class="bulleted-list"><li style="list-style-type:disc">2023 Marketing Analytics Specialization Partner of the Year</li></ul></li></ol><ol type="1" id="9089be4b-9d27-4524-8432-e6b360157ba6" class="numbered-list" start="8"><li><strong>Google Cloud:</strong><ul id="dd52c850-8500-4ea9-a893-ea3e4332f23b" class="bulleted-list"><li style="list-style-type:disc">2023 North America Breakthrough Partner of the Year</li></ul></li></ol><figure id="2b206cf7-9d40-4404-ae23-e42f522f5b50" class="image"><a href="Quantiphi%2096dbdd2792d7454795cc6f815e05ff8e/Untitled%201.png"><img style="width:679.9791870117188px" src="Quantiphi%2096dbdd2792d7454795cc6f815e05ff8e/Untitled%201.png"/></a></figure></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Partners</summary><div class="indented"><figure id="f2cf2f91-d637-4e09-99eb-f5a239e3731d" class="image"><a href="Quantiphi%2096dbdd2792d7454795cc6f815e05ff8e/b0ced56f-2eac-4488-9b91-c91980673460.png"><img style="width:708px" src="Quantiphi%2096dbdd2792d7454795cc6f815e05ff8e/b0ced56f-2eac-4488-9b91-c91980673460.png"/></a></figure></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Core Values</summary><div class="indented"><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0"><strong>Solving Problems</strong></summary><div class="indented"><p id="206ed7ef-713a-477a-a139-d138d585d9e3" class="">We solve what matters.</p><p id="81c02e0c-c7b0-4a04-adc7-43181af437da" class="">At the core, we are creative problem-solvers who tackle the toughest industry problems and create opportunities from them. We take a step forward each time we solve a problem. We leverage cutting-edge science to build quantifiable impact and business value by solving the most important and relevant problems.</p></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0"><strong>Keeping Commitments</strong></summary><div class="indented"><p id="ee054ee5-7b4f-41db-b40d-6b600d8d8764" class="">We own our actions.</p><p id="b876971b-982d-4246-ab38-b8a33743d434" class="">We take responsibility as an organization and as individuals to deliver on our promises and support others in achieving growth. We hold ourselves accountable to our customers, stakeholders, and to our employees.</p></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0"><strong>Valuing Employees</strong></summary><div class="indented"><p id="0db22f6c-4edb-49d4-9487-8cf904633460" class="">We are you.</p><p id="dd20f6f4-e268-4612-b2a9-9c59aa798127" class="">We celebrate our employees, embrace our differences, and strive to create an inclusive environment where everyone is their best self irrespective of their cultures, regions, languages and genders. We invest in coaching, training, and development of our people so all of us can grow together.</p></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0"><strong>Working as a Team</strong></summary><div class="indented"><p id="8ce6052f-9784-4e7c-b9d7-393857634e72" class="">With a performance-oriented work culture, we work together to solve the most pressing industry challenges. We collaborate with our customers and partners while staying competitive in the markets we serve.</p></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0"><strong>Honoring Human Centricity</strong></summary><div class="indented"><p id="732a49ff-45e4-4f64-9cc0-a2472152f701" class="">We combine human ethics and values with AI.</p><p id="61c621cd-c64f-4dcc-bb10-6afa7d66bf0b" class="">Ethical and responsible AI is at the core of Quantiphi. We leverage the capabilities of AI and machine learning and human input to enable machines to understand behaviour, emotions, and languages better. This allows us to build solutions that deliver viable business outcomes.</p></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0"><strong>Committing to Our Identity</strong></summary><div class="indented"><p id="1005df8e-2771-44bd-b35b-e3eab2e2234a" class="">We are Quantiphites.</p><p id="3413e61e-d9df-4646-bfda-364cad6ae473" class="">We each represent Quantiphi through our decisions and actions. We are committed to upholding Quantiphi’s values and principles and creating a thriving culture where we can rely on each other.</p></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0"><strong>Delivering and Enabling Sustainability</strong></summary><div class="indented"><p id="42c0895b-64c5-43b0-af76-48fa7ec413d1" class="">We care.</p><p id="3abfd8fe-9fde-43ef-9c48-1c6c603a1d68" class="">Quantiphi is a value-creating company and our business decisions consider environmental, economic, and social factors. We care about our environment, colleagues, partners, customers and the communities we operate in. We work together to contribute to the company&#x27;s sustainability success.</p></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0"><strong>Elevating Customer Success</strong></summary><div class="indented"><p id="17c6e47d-29e2-471e-b536-d6104f8f5448" class="">We deliver precision.</p><p id="b0b44dc2-a650-4cdb-97a6-39e06103c69d" class="">Our customers’ success is our reward. We understand our customers, their business needs, and expectations. In every relationship and engagement, we are focused on creating exceptional service and experience. We relentlessly create shared success through innovation, collaboration, and an empathy-driven approach.</p></div></details></div></details><p id="04dc801d-9062-4ac4-ab8e-1713448adf76" class="">
+</p><hr id="3593e191-c486-4002-9887-c7662a0e6c95"/><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">HR Round </summary><div class="indented"><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Job Description</summary><div class="indented"><figure id="efe45a6c-f42a-4cd3-9ba1-f527f2a5b7b1"><div class="source"><a href="Quantiphi%2096dbdd2792d7454795cc6f815e05ff8e/Intern_-_Business_Analyst.pdf">https://prod-files-secure.s3.us-west-2.amazonaws.com/5f665d9e-db1d-4cc8-bc68-d95f6452e84a/2efc02b5-2702-4144-9acf-f8183b43dad3/Intern_-_Business_Analyst.pdf</a></div></figure></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Glassdoor </summary><div class="indented"><p id="ec0a11c6-2cc0-4ecb-bfcd-af69f5c1d0f7" class=""><code>Must Visit!!</code> </p><figure id="5ed619e8-ee47-4112-8236-8a9150fd8f37"><a href="https://www.glassdoor.co.in/Overview/Working-at-Quantiphi-EI_IE1143542.11,20.htm" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Working at Quantiphi</div><div class="bookmark-description">See what employees say it&#x27;s like to work at Quantiphi. Salaries, reviews, and more - all posted by employees working at Quantiphi.</div></div><div class="bookmark-href"><img src="https://www.glassdoor.co.in/favicon.ico" class="icon bookmark-icon"/>https://www.glassdoor.co.in/Overview/Working-at-Quantiphi-EI_IE1143542.11,20.htm</div></div></a></figure><ul id="398e5e2c-a3cb-4d17-a819-e285d5ac1fb5" class="toggle"><li><details open=""><summary><strong>Video about the </strong><mark class="highlight-teal"><strong>Nvidia Awards</strong></mark></summary><figure id="b9bf1f50-86c6-4fd5-a148-1d5040656adf"><div class="source"><a href="https://youtu.be/IqDE-BVq3_0">https://youtu.be/IqDE-BVq3_0</a></div></figure></details></li></ul><ul id="1370694f-e949-448a-b9ac-939aa2c64ba8" class="toggle"><li><details open=""><summary><strong>Interview Questions taken from </strong><mark class="highlight-teal"><strong>Glassdoor</strong></mark></summary><p id="6f085d27-be25-4e7a-b59e-059df99a40da" class=""><code>Important Question</code></p><blockquote id="5b4b8438-a7cb-4135-a9a7-0d1043c17189" class=""><mark class="highlight-yellow"><strong>How will your skills help in this role of you becoming a </strong></mark><mark class="highlight-teal"><strong>business analyst</strong></mark><mark class="highlight-yellow"><strong>?</strong></mark></blockquote><p id="cceb5986-3002-45a2-b072-0f4d7d8eba8c" class="">
+</p><ol type="1" id="b01c4d14-a743-42ae-b066-cf27c83dd106" class="numbered-list" start="1"><li>What all AI tools have you used and what is the most interesting question that you have asked to the AI model?</li></ol><ol type="1" id="5fc55f5f-c193-408d-a3c3-696ba5977935" class="numbered-list" start="2"><li>Whats your best achievement till date?</li></ol><ol type="1" id="2c66d920-ce5a-470d-87e9-d88e3c65f3bd" class="numbered-list" start="3"><li>Introduce yourself, no. Of iPhones sold in India, why is manhole cover circular</li></ol><ol type="1" id="80e113b4-66ef-44b0-87dd-06c076837508" class="numbered-list" start="4"><li><mark class="highlight-purple">Multiple*</mark><ol type="a" id="f12bc5e9-56ef-4f7e-8f07-d5f3150b0737" class="numbered-list" start="1"><li>Tell me about yourself? </li></ol><ol type="a" id="4936015c-4edb-4bd0-8ab1-9e46643960ba" class="numbered-list" start="2"><li>2. No of smartphone sold in india in a year? </li></ol><ol type="a" id="efc001e9-a7ed-422b-a2ed-e827c068804d" class="numbered-list" start="3"><li>Roles and responsibilities of Business analyst? </li></ol><ol type="a" id="a4e8be0a-ae80-4aa5-b01d-cdb13c517653" class="numbered-list" start="4"><li>Some GfG interview puzzle? </li></ol></li></ol><ol type="1" id="7631636f-f807-46fa-8cf4-46290cb30527" class="numbered-list" start="5"><li>Suppose the company created an online learning application, how would you sell it to your customer? Suppose the app was to be finished working on by a given deadline and for some reason, the company wasn&#x27;t able to meet the deadline and the customers are disappointed, how would you manage such a situation?</li></ol><ol type="1" id="37f63ad3-a075-40c5-9b1d-11f10c2ac3f0" class="numbered-list" start="6"><li><mark class="highlight-purple">Multiple*</mark><ol type="a" id="5ae64709-ad6d-4bef-bd3c-a936621495c6" class="numbered-list" start="1"><li>Have you gone through Quantiphi website </li></ol><ol type="a" id="b49588da-dd73-47ac-93fa-2a0d790fedee" class="numbered-list" start="2"><li>What are we working at? </li></ol><ol type="a" id="fa790bb0-d002-4f70-b729-11db3fcf9ff4" class="numbered-list" start="3"><li>Have you read the interview reviews in the Glassdoor</li></ol></li></ol><ol type="1" id="f1aeea40-5cbc-4ea7-aaec-5179b053b045" class="numbered-list" start="7"><li>Guess the number of uber drivers required in a tier two city</li></ol><ol type="1" id="ed42e6b7-bba2-44df-97a7-eebe99d4583d" class="numbered-list" start="8"><li>Mathematics based question on knock out matches? if 8 teams given all knockout matches, how many matches in total.</li></ol><ol type="1" id="25982a06-a93c-4e83-98bb-3da05faaf64e" class="numbered-list" start="9"><li>How many people travel in local trains in Mumbai?</li></ol><ol type="1" id="1f62a188-e621-42c3-8e52-fa2702c4e324" class="numbered-list" start="10"><li>How many streetlamps will be there in mumbai? (Guesstimate)</li></ol><p id="996e0687-6fe6-4f47-92b7-edd1a8f981a2" class="">
+</p></details></li></ul><ul id="ab36d387-f32e-43ae-b41d-b04b5c88d062" class="toggle"><li><details open=""><summary>Summary</summary><figure id="320506a7-aa14-4a56-bf4a-31625946520a" class="image"><a href="Quantiphi%2096dbdd2792d7454795cc6f815e05ff8e/Untitled%202.png"><img style="width:908px" src="Quantiphi%2096dbdd2792d7454795cc6f815e05ff8e/Untitled%202.png"/></a></figure></details></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Interview Questions</summary><div class="indented"><p id="0ae94f01-7079-458a-8190-9926a11d6653" class="">In an HR round of an interview, the questions often focus on assessing your cultural fit, soft skills, and overall suitability for the company. Here are some common HR interview questions and tips on how to answer them:</p><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Common HR Interview Questions</summary><div class="indented"><ol type="1" id="7f93414f-64e5-4be8-8963-2708f8ec4e6d" class="numbered-list" start="1"><li><strong>Tell me about yourself.</strong><ul id="310a475a-c275-4f32-8888-e3009a4086cd" class="toggle"><li><details open=""><summary><code>Answer</code> </summary><p id="84177b70-a3a8-4dd3-90e3-ac383040f7ec" class=""><mark class="highlight-yellow">Hello, I&#x27;m Simona Rumao. </mark></p><p id="d529509f-b176-43ba-97d6-2442ce207fb5" class=""><mark class="highlight-yellow">I&#x27;m currently pursuing my Bachelor of Engineering in Computer Engineering from Fr. Conceicao Rodrigues College of Engineering, where I maintain a CGPA of 9.5.</mark></p><p id="47c24f03-f18f-4e52-8789-14d58edcc4f5" class=""><mark class="highlight-yellow">My passion for web development has driven me to develop a strong foundation in both frontend and backend technologies. Recently, I had the opportunity to intern as a cybersecurity intern, which opened doors for me to make systems and applications more secure.</mark></p><p id="3f81dc1f-92eb-4160-92ff-f55a0997183b" class=""><mark class="highlight-yellow">During this internship, I gained valuable insights into identifying vulnerabilities, implementing  security measures beforehand.<br/>Beyond my technical skills, I have a strong background in public relations, having interned at Viral Fission where I collaborated with brands like Spotify, which further enhanced my team-building and communication abilities.<br/></mark></p><p id="a93ed2b2-8a31-4be3-b24a-57c7f2d1b387" class=""><mark class="highlight-yellow">One of my recent achievement was wining Smart India Hackathon 2023.<br/>Where we developed a project called &#x27;Sentinel Shield&#x27;. Sentinel Shield is a Missile Detection and Projectile Prediction system that utilized various technologies to solve a real-world problem.<br/></mark></p><p id="6c1b6126-a6a3-49fd-9ac3-dd387d755695" class=""><mark class="highlight-yellow">Outside of my professional interests, I love travelling and trying new places.</mark></p></details></li></ul></li></ol><ol type="1" id="7f99bce0-0f8c-458d-b5fc-8e772edb171d" class="numbered-list" start="2"><li><strong>Why do you want to work here?</strong><ul id="9e1dc41e-0c58-4f1e-9a77-2b70235a1f3f" class="toggle"><li><details open=""><summary><code>Answer</code></summary><p id="1e0b7c7f-7154-48b2-b021-4656b15f0f01" class=""><mark class="highlight-yellow">&quot;I want to work at Quantiphi because I am genuinely inspired by your commitment to &#x27;Solving What Matters.&#x27; Your approach to leveraging AI and machine learning to tackle complex business challenges and create significant value for clients resonates deeply with me.</mark></p><p id="7c35de06-f542-4ef9-ad62-aa5130f3bf60" class=""><mark class="highlight-yellow">From my research, I have been impressed by your innovative solutions in diverse sectors such as healthcare, finance, and retail, which not only demonstrate your technical expertise but also your dedication to making a positive impact. The opportunity to contribute to projects that solve real-world problems and drive meaningful change is incredibly motivating.</mark></p><p id="9a798e01-3952-4d6f-b385-bed4327c8be0" class=""><mark class="highlight-yellow">Ultimately, I am excited about the possibility of growing with Quantiphi and being part of a team that is at the forefront of technological innovation, consistently pushing the boundaries of what AI and machine learning can achieve. Your mission and values strongly resonate with my own, and I am enthusiastic about the opportunity to be a part of your journey in solving what truly matters.&quot;</mark></p></details></li></ul></li></ol><ol type="1" id="eec681ef-66af-471f-8793-26b604f68839" class="numbered-list" start="3"><li><strong>What are your strengths and weaknesses?</strong><ul id="ab166795-8e3b-41e9-b750-92774c4090e3" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><strong>Tip</strong></mark></summary><p id="b6447050-4d7a-44fd-8402-e877d97068d6" class="">Choose strengths that align with the job requirements. For weaknesses, mention something you’re working to improve and the steps you’re taking to overcome it.</p></details></li></ul></li></ol><ol type="1" id="7166357b-d1fd-4ea8-8dc3-3af334a1c4e3" class="numbered-list" start="4"><li><strong>Describe a challenging situation you faced at work and how you handled it.</strong><ul id="35462f77-d26f-42b1-945b-e8715bd5c5c8" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><strong>Tip</strong></mark></summary><p id="2aba743c-93f9-4e45-95c9-bf0c70afc4d3" class="">Use the STAR method (Situation, Task, Action, Result) to structure your answer. Focus on a specific example, what the challenge was, what actions you took, and what the outcome was.</p></details></li></ul></li></ol><ol type="1" id="6c45963a-a638-4dc3-bca2-65b6c9979375" class="numbered-list" start="5"><li><strong>How do you handle stress and pressure?</strong><ul id="4cf662c0-d036-405a-b938-06a7203f1491" class="toggle"><li><details open=""><summary><code>Answer</code></summary><p id="454bc0a3-ec6b-4258-82a4-8b3f76831b9b" class=""><mark class="highlight-yellow">&quot;I handle stress and pressure by maintaining a calm and focused approach, leveraging effective techniques, and relying on teamwork. One notable experience that highlights my ability to manage stress was during the Smart India Hackathon. It was an intense 36-hour period filled with immense pressure, tight deadlines, and the high stakes of delivering a successful project.</mark></p><p id="28bcfb7e-c85d-4f0e-a4d3-173c45729632" class=""><mark class="highlight-yellow">During the hackathon, I prioritized tasks by breaking down the project into manageable steps, which helped in maintaining a clear direction and focus. Taking short breaks when needed allowed me to stay refreshed and maintain high productivity levels throughout the event.</mark></p><p id="f5dfb9e6-6dfc-4318-97e2-5e6a64f3b629" class=""><mark class="highlight-yellow">However, what truly stood out was the power of teamwork. Collaborating closely with my team, we supported each other, shared responsibilities, and kept each other motivated. Our determination and resilience were key factors in overcoming the challenges we faced. We remained committed to our goal and adapted quickly to any obstacles that arose.</mark></p><p id="7545483f-1014-4ed1-8b2f-5c53280e9c94" class=""><mark class="highlight-yellow">This experience reinforced the importance of staying organized, taking breaks to recharge, and fostering a supportive team environment. These strategies have been crucial in managing stress and pressure in various situations, ensuring that I can perform effectively even under demanding circumstances.&quot;</mark></p></details></li></ul></li></ol><ol type="1" id="8ad9bba6-2d25-41f7-b609-8a3176677e71" class="numbered-list" start="6"><li><strong>Where do you see yourself in five years?</strong><ul id="9e037ebc-1fb9-4071-8c31-69abccf86393" class="toggle"><li><details open=""><summary><code>Answer</code></summary><p id="2587fb49-ee27-420b-85dd-5281f615874d" class="">“<mark class="highlight-yellow">In five years, I see myself growing both professionally and personally within Quantiphi. My immediate goal is to leverage my skills in business analysis and project delivery to contribute to the successful execution of innovative solutions that drive significant value for our clients.</mark></p><p id="62304a6a-826a-4cc0-a72f-bd238c47fdd6" class=""><mark class="highlight-yellow">As I gain more experience and deepen my understanding of the company’s processes and culture, I aim to take on more responsibility, potentially leading larger, more complex projects. I am particularly interested in advancing into a leadership role where I can mentor junior analysts and contribute to strategic decision-making processes.</mark></p><p id="6504c7e9-ba02-4e67-8fdc-413831c618d1" class=""><mark class="highlight-yellow">Additionally, I want to continue developing my expertise in AI and machine learning, aligning my growth with Quantiphi’s commitment to &#x27;Solving What Matters.&#x27; By staying at the forefront of industry trends and continuously enhancing my skills, I aspire to be a key contributor to Quantiphi’s mission and long-term success.</mark></p><p id="5b0e531b-30d3-498a-9961-3378195c55e5" class=""><mark class="highlight-yellow">Ultimately, I see myself as an integral part of Quantiphi’s team, driving impactful projects, fostering innovation, and contributing to the company’s growth and success.&quot;</mark></p></details></li></ul></li></ol><ol type="1" id="fc6aa696-27ed-4988-ab02-7152c41021bb" class="numbered-list" start="7"><li><strong>Can you describe your ideal work environment?</strong><ul id="aac60c52-be71-454d-8380-3a6f04aaab31" class="toggle"><li><details open=""><summary><code>Answer</code></summary><p id="9a7a0f42-326b-4ff6-b322-d058251df1c9" class=""><mark class="highlight-yellow">&quot;My ideal work environment is one that fosters collaboration, innovation, and continuous learning. I thrive in settings where teamwork and open communication are prioritized, as these elements are crucial for successfully delivering complex projects. I appreciate an environment where ideas are freely shared, and everyone feels valued and heard.</mark></p><p id="c6472a3e-6d1a-40bd-9f66-d9be2a78febf" class=""><mark class="highlight-yellow">Moreover, I value a culture that supports professional growth and development. An environment that offers opportunities for learning, whether through formal training, mentorship programs, or hands-on project experience, is important to me. I am eager to continuously enhance my skills and contribute more effectively to the team and company.</mark></p><p id="c0fc6645-f1a8-4ab1-99d3-bdda8b386eb8" class=""><mark class="highlight-yellow">Lastly, I appreciate a supportive and flexible work environment that recognizes the importance of work-life balance. Being able to manage my time effectively and having the support to balance work with personal commitments ensures that I can maintain high productivity and job satisfaction.</mark></p><p id="b51f4987-f1f1-4175-9944-6e53a651e3b5" class=""><mark class="highlight-yellow">Overall, I believe Quantiphi’s dynamic and innovative culture, combined with a strong focus on collaboration and growth, aligns perfectly with my vision of an ideal work environment.&quot;</mark></p></details></li></ul></li></ol><ol type="1" id="918538cd-dfeb-4c90-999b-bc8052ec0fd3" class="numbered-list" start="8"><li><strong>How do you prioritize your work?</strong><ul id="aa747c26-e355-447d-8f0c-70899180a53e" class="toggle"><li><details open=""><summary><code>Answer</code></summary><p id="a2165595-7555-4f99-8fb2-be807c909d9b" class=""><mark class="highlight-yellow">&quot;I prioritize my work by using a combination of strategic planning, effective time management, and clear communication. Here’s my approach:</mark></p><ol type="1" id="f79a55ef-8ee1-4dcb-a6b8-038caaf20672" class="numbered-list" start="1"><li><mark class="highlight-yellow"><strong>Understanding Objectives</strong></mark><mark class="highlight-yellow">:</mark><ul id="e26bf599-433c-40d4-833c-402661a75422" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow">First, I make sure I have a clear understanding of the project goals and business objectives. This helps me align my tasks with the overall priorities of the organization.</mark></li></ul></li></ol><ol type="1" id="f1fe707e-8bdd-4fd1-98aa-2d9f7a058de6" class="numbered-list" start="2"><li><mark class="highlight-yellow"><strong>Creating a Task List</strong></mark><mark class="highlight-yellow">:</mark><ul id="f3c9ca9b-c19b-4664-b8da-58fc1d4dad9b" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow">I start by listing all the tasks that need to be completed. I use project management tools like Trello or Asana to keep track of tasks, deadlines, and progress.</mark></li></ul></li></ol><ol type="1" id="6e1f2bf9-7be1-450e-90f9-6af3dd9fc0ba" class="numbered-list" start="3"><li><mark class="highlight-yellow"><strong>Prioritizing Tasks</strong></mark><mark class="highlight-yellow">:</mark><ul id="4f43c2ad-6bdd-4e55-a71a-bac9010bc40a" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow">I prioritize tasks based on their urgency and importance, often using the Eisenhower Matrix to categorize them into four quadrants: urgent and important, important but not urgent, urgent but not important, and neither urgent nor important. This helps me focus on what truly matters.</mark></li></ul></li></ol><ol type="1" id="7b61a2ac-d943-4d35-ac00-e6b461402c74" class="numbered-list" start="4"><li><mark class="highlight-yellow"><strong>Setting Deadlines</strong></mark><mark class="highlight-yellow">:</mark><ul id="c91b849e-b05e-47f3-b0d9-94adde4e4b5d" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow">For each task, I set realistic deadlines and milestones. Breaking down larger tasks into smaller, manageable steps with individual deadlines ensures steady progress and reduces the risk of missing critical deadlines.</mark></li></ul></li></ol><ol type="1" id="58babf8a-3653-4f0a-8827-8e983a700b33" class="numbered-list" start="5"><li><mark class="highlight-yellow"><strong>Allocating Time</strong></mark><mark class="highlight-yellow">:</mark><ul id="918ebc29-1fc2-4d73-806f-3ce41abdbcee" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow">I allocate specific time blocks for high-priority tasks, ensuring I have dedicated, uninterrupted time to focus on them. I use techniques like time-blocking and the Pomodoro Technique to maintain productivity and avoid burnout.</mark></li></ul></li></ol><ol type="1" id="a45591a8-2e79-43d5-a2bf-5364ff238d3d" class="numbered-list" start="6"><li><mark class="highlight-yellow"><strong>Communicating and Collaborating</strong></mark><mark class="highlight-yellow">:</mark><ul id="6d92d312-f00f-4059-96fe-586d0454517c" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow">Clear communication with team members and stakeholders is crucial. I regularly update them on my progress and any potential delays. This helps in managing expectations and ensuring that everyone is on the same page.</mark></li></ul></li></ol><ol type="1" id="df88c5fe-ce2e-4322-aca8-2467c984a207" class="numbered-list" start="7"><li><mark class="highlight-yellow"><strong>Flexibility and Adaptability</strong></mark><mark class="highlight-yellow">:</mark><ul id="616fb89c-193d-4034-bd29-1a30460d1f52" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow">I remain flexible and adaptable to changing priorities. In a dynamic environment, priorities can shift, and I am prepared to reassess and adjust my plans accordingly. This might involve re-prioritizing tasks and reallocating resources as needed.</mark></li></ul></li></ol><ol type="1" id="02f4a3a5-de03-404b-99a6-c6e4bac8a5c4" class="numbered-list" start="8"><li><mark class="highlight-yellow"><strong>Review and Reflect</strong></mark><mark class="highlight-yellow">:</mark><ul id="1df6a30c-076d-419c-9019-e9384d396209" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow">At the end of each week, I review my completed tasks and reflect on what went well and what could be improved. This helps me refine my prioritization and time management strategies for future tasks.</mark></li></ul></li></ol><p id="98f4b822-316a-47d1-b0d4-bbdae49298b7" class=""><mark class="highlight-yellow">For example, during the Smart India Hackathon, I effectively prioritized tasks by breaking down our project into critical components, setting clear milestones, and ensuring constant communication within the team. Despite the high-pressure environment, this structured approach allowed us to stay focused, meet our deadlines, and ultimately succeed.&quot;</mark></p></details></li></ul></li></ol><ol type="1" id="207b32f5-6198-43b7-b9bd-c8d6a41024fe" class="numbered-list" start="9"><li><strong>What motivates you?</strong><ul id="5d0851f0-32a3-42f3-b6ba-ffbf6a50fc1a" class="toggle"><li><details open=""><summary><code>Answer</code></summary><p id="69f514cc-cde9-48da-a614-0fe064295bd5" class=""><mark class="highlight-yellow">&quot;What motivates me is the opportunity to solve complex problems and make a meaningful impact through innovative solutions. I am particularly driven by projects that challenge my analytical and strategic thinking, allowing me to leverage my skills to deliver tangible results.</mark></p><p id="c0abf4a1-8374-4b6c-a0e8-f5d6e63e1fe6" class=""><mark class="highlight-yellow">At Quantiphi, the focus on &#x27;Solving What Matters&#x27; resonates deeply with me. Being part of a team that uses cutting-edge technologies to address real-world issues is incredibly inspiring. The prospect of contributing to projects that not only drive business success but also have a positive impact on society motivates me to excel in my role.</mark></p><p id="14a1e959-632b-41d2-ab5a-dbc40ac4d42b" class=""><mark class="highlight-yellow">Continuous learning and professional growth are also significant motivators for me. I am passionate about staying at the forefront of industry trends, enhancing my skills, and taking on new challenges. The dynamic and innovative culture at Quantiphi provides the perfect environment for this, fostering both personal and professional development.</mark></p><p id="9fd9167c-fa90-45c7-9bdb-a43bbd06fdeb" class=""><mark class="highlight-yellow">Furthermore, I am motivated by collaboration and teamwork. Working with diverse teams, sharing knowledge, and learning from others’ experiences drives my passion for achieving collective success. The synergy created in such environments not only enhances project outcomes but also makes the work experience more fulfilling.</mark></p><p id="0eaed615-f8e1-4486-aeef-d3f6ef929328" class=""><mark class="highlight-yellow">In summary, the combination of solving complex problems, continuous learning, and collaborative teamwork fuels my motivation. I am excited about the opportunity to bring my enthusiasm and skills to Quantiphi, contributing to projects that truly matter.&quot;</mark></p></details></li></ul></li></ol><ol type="1" id="5a96043f-051f-4dca-bc9d-08e49d8219fb" class="numbered-list" start="10"><li><strong>Do you have any questions for us?</strong><ul id="a4e879e8-15e7-4c3b-9d18-ad521f8aa565" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><strong>Tip</strong></mark></summary><p id="74d4fdca-a138-4cf1-85be-276edba433d9" class="">Always have a few questions prepared to show your interest in the role and the company. You could ask about the team you’ll be working with, opportunities for professional development, or what a typical day looks like in the role.</p></details></li></ul></li></ol><p id="2d2535eb-8afe-4e0f-830a-a66a78db4ea6" class="">
+</p></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Questions on <mark class="highlight-blue">Quantiphi</mark></summary><div class="indented"><p id="06688b8f-7baf-474e-a65c-26bb35f5eb9f" class="">When preparing for an interview with Quantiphi, it&#x27;s beneficial to anticipate questions related to the company and how your skills and experiences align with their needs. Here are some potential questions you might encounter:</p><h3 id="6559fb47-a7bb-4523-97b7-68d9e503dca6" class="">Questions About Quantiphi:</h3><ol type="1" id="77bf63ca-c497-464a-a6aa-cc135a4c2a14" class="numbered-list" start="1"><li><strong>What do you know about Quantiphi?</strong><ul id="e812e5e9-1c52-4ac9-8ca0-c611d61cdd99" class="toggle"><li><details open=""><summary><code>Answer</code></summary><p id="fa0f51c8-ff23-4f8d-912e-69ace0441517" class=""><mark class="highlight-yellow">&quot;I have researched Quantiphi extensively and am truly impressed by your organization’s mission and accomplishments. Quantiphi is renowned for its innovative approach to solving real-world problems through cutting-edge artificial intelligence and machine learning solutions. Here are some key points about Quantiphi that stand out to me:</mark></p><ol type="1" id="df472474-4219-4b2e-bb2e-e904a74e7e91" class="numbered-list" start="1"><li><mark class="highlight-yellow"><strong>Mission and Values</strong></mark><mark class="highlight-yellow">:</mark><ul id="0154179f-5d5c-481d-a2b3-8f718be57fb7" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow">Quantiphi is dedicated to &#x27;Solving What Matters,&#x27; focusing on leveraging AI to address complex business challenges and create significant value for clients. Your commitment to innovation, excellence, and making a positive impact resonates deeply with me.</mark></li></ul></li></ol><ol type="1" id="7890ee2d-990b-4f9b-bbdb-3b7dc750702d" class="numbered-list" start="2"><li><mark class="highlight-yellow"><strong>Core Areas and Services</strong></mark><mark class="highlight-yellow">:</mark><ul id="cd449fb4-db18-4e10-91b3-a8feb9aad99c" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow">Quantiphi operates in several key sectors, including healthcare, finance, retail, and media. The company provides a range of services, including data and analytics, AI and machine learning, cloud engineering, and business process transformation. This diverse expertise enables you to deliver comprehensive solutions tailored to various industries.</mark></li></ul></li></ol><ol type="1" id="41084fd7-c20e-4107-97f1-5c17f07e88c5" class="numbered-list" start="3"><li><mark class="highlight-yellow"><strong>Innovative Solutions</strong></mark><mark class="highlight-yellow">:</mark><ul id="d164c155-110b-46b7-a7d0-650789241e2a" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow">Your work in developing AI-powered applications for predictive analytics, natural language processing, computer vision, and other advanced technologies is particularly impressive. Quantiphi&#x27;s ability to create solutions that transform data into actionable insights is a testament to your technical prowess and strategic thinking.</mark></li></ul></li></ol><ol type="1" id="257c031b-9f47-4266-91e5-2a8c38f1f4b9" class="numbered-list" start="4"><li><mark class="highlight-yellow"><strong>Recognition and Achievements</strong></mark><mark class="highlight-yellow">:</mark><ul id="5ba0b579-5a07-41ba-a462-beb30cd0854a" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow">Quantiphi has received numerous accolades for its work, including being recognized as a leader in AI and machine learning by industry analysts. Notably, your inclusion in the Forrester Wave™ report and winning the &#x27;Partner of the Year&#x27; award from major cloud service providers like AWS highlight your excellence and leadership in the field.</mark></li></ul></li></ol><ol type="1" id="2ed9d4cd-b017-469e-b87d-5a8f94f811bb" class="numbered-list" start="5"><li><mark class="highlight-yellow"><strong>Recent News and Developments</strong></mark><mark class="highlight-yellow">:</mark><ul id="bc8cb6ab-0ae4-43c8-99b1-17d2753d3d98" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow">I am aware of some of Quantiphi’s recent initiatives, such as the development of AI solutions for COVID-19 response, which demonstrates your commitment to leveraging technology for societal good. Additionally, your expansion into new markets and partnerships with leading organizations underscore Quantiphi&#x27;s growth and strategic vision.&quot;</mark></li></ul></li></ol></details></li></ul></li></ol><ol type="1" id="22c7966f-3379-4b9a-b48f-53ffb1edead9" class="numbered-list" start="2"><li><strong>Why do you want to work at Quantiphi?</strong><ul id="d7927f2b-9d68-4b63-826a-60692cf469f8" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><strong>Tip</strong></mark></summary><p id="fcf27ace-124f-40e7-b660-0d286db0036b" class="">Explain what specifically attracts you to Quantiphi, such as their innovative approach to AI and machine learning, their industry reputation, or their company culture. Align your career goals with what Quantiphi offers.</p></details></li></ul></li></ol><ol type="1" id="4a4fa320-a978-4567-ab27-339764672784" class="numbered-list" start="3"><li><strong>How do you think your background and skills will contribute to Quantiphi’s projects?</strong><ul id="2a4c03c5-2b25-413c-b549-808bb209b1c8" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><strong>Tip</strong></mark></summary><p id="1056c381-a619-4d95-a653-371724d8eb0b" class="">Provide specific examples of your past work that align with Quantiphi’s services, such as experience with AI, machine learning, data analytics, or software development. Show how your skills can benefit their current and future projects.</p></details></li></ul></li></ol><ol type="1" id="19cf7fed-8d63-4a0c-9e21-35ffcc287097" class="numbered-list" start="4"><li><strong>Which of Quantiphi’s products or solutions do you find most interesting and why?</strong><ul id="fae5de1d-3dbc-40d6-b8fd-37d1c62fc281" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><strong>Tip</strong></mark></summary><p id="29eda4aa-5e96-4da4-bc33-42fb3d87ffb7" class="">Choose a product or solution that genuinely interests you and explain why. Demonstrate your understanding of the product and its impact on the industry or market.</p></details></li></ul></li></ol><ol type="1" id="2afbdac3-460f-410b-a539-d5621469ae1c" class="numbered-list" start="5"><li><strong>Can you describe a time when you worked on a project similar to what we do at Quantiphi?</strong><ul id="a194b9b5-ab5a-416f-9247-8fbb86e079db" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><strong>Tip</strong></mark></summary><p id="37043e5a-a765-4c1d-a784-9aa9702e7522" class="">Use the STAR method to describe a relevant project. Focus on the skills and technologies you used, the challenges you faced, and the results you achieved.</p></details></li></ul></li></ol><ol type="1" id="d01e65a3-9f86-4fcd-ad27-ff620ca274e2" class="numbered-list" start="6"><li><strong>Quantiphi emphasizes innovation. Can you give an example of a time you introduced a new idea or innovation in your previous role?</strong><ul id="c9ce8a4e-5572-49f0-83fe-21fcfd98ab4d" class="toggle"><li><details open=""><summary><code>Answer</code></summary><p id="171eb2ee-15d2-4deb-9456-621b229979f4" class="">One of my notable project, the sih winning project is our own innovation, we won under the student innovation.</p></details></li></ul></li></ol><ol type="1" id="307b5499-8426-4981-a8cb-c39d9c4c380e" class="numbered-list" start="7"><li><strong>How do you stay updated with the latest trends in AI and machine learning?</strong><ul id="66471a27-058d-4a3b-89a2-c4dd89dce8bc" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><strong>Tip</strong></mark></summary><p id="f1ad3738-6c38-47c4-9a2d-083ea99ecb7d" class="">Mention specific resources you use, such as industry blogs, academic journals, online courses, and professional networks. Demonstrate your commitment to continuous learning.</p></details></li></ul></li></ol><h3 id="72c54b56-981f-48bb-bef4-4c5d6c7c2a1c" class="">Behavioral and Cultural Fit Questions:</h3><ol type="1" id="4554a0d5-1651-4853-8af1-9ce9f932c188" class="numbered-list" start="1"><li><strong>How do you approach teamwork and collaboration?</strong><ul id="7bfd63c1-89bd-4bd1-80c7-2486dbc6723b" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><strong>Tip</strong></mark></summary><p id="e0114c01-636d-486a-9157-8a19dd52859f" class="">Provide examples of how you’ve successfully worked in teams. Emphasize your communication skills, your ability to listen and compromise, and your contributions to team success.</p></details></li></ul></li></ol><ol type="1" id="5c371015-efe9-4482-bc32-54d59a9898bb" class="numbered-list" start="2"><li><strong>Can you describe a situation where you had to meet a tight deadline?</strong><ul id="32252d1b-9198-4580-a944-ce3c95fed73a" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><strong>Tip</strong></mark></summary><p id="7ea928de-9284-425f-9051-d6b867b39db3" class="">Discuss how you prioritize tasks, manage time, and handle stress. Give a specific example where you met a deadline under pressure and delivered quality work.</p></details></li></ul></li></ol><ol type="1" id="ea57fedb-792b-42c6-bae3-b727ecc3c990" class="numbered-list" start="3"><li><strong>What is your experience with remote work or working in a distributed team?</strong><ul id="c3389146-3dd0-4f9d-9085-125775b3587f" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><strong>Tip</strong></mark></summary><p id="10cae29d-475f-4626-8c34-b890e4f3f0e9" class=""> Highlight your ability to work independently, manage your time effectively, and communicate well with team members regardless of location.</p></details></li></ul></li></ol><ol type="1" id="b59cafbd-c7bc-4d49-8c34-8cf9312d299c" class="numbered-list" start="4"><li><strong>How do you handle feedback and criticism?</strong><ul id="3d8e0eae-25d8-439a-9cf0-5eab0d0c024c" class="toggle"><li><details open=""><summary><code>Answer</code> </summary><ol type="1" id="f8ce6091-2813-4f44-a712-6eaa6880fb7b" class="numbered-list" start="1"><li><mark class="highlight-yellow"><strong>Active Listening</strong></mark><mark class="highlight-yellow">:</mark><ul id="7fd23c74-73fc-4bc1-8f94-01ee375e011f" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow">I actively listen to feedback and criticism, ensuring that I fully understand the perspective and the specific points being raised. This involves being attentive, asking clarifying questions if needed, and avoiding defensive reactions.</mark></li></ul></li></ol><ol type="1" id="e5491664-0a30-4362-b725-4af738bfeffc" class="numbered-list" start="2"><li><mark class="highlight-yellow"><strong>Staying Open-Minded</strong></mark><mark class="highlight-yellow">:</mark><ul id="f6adec94-1582-4003-9f08-526fd115ec56" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow">I approach feedback with an open mind, viewing it as an opportunity for growth rather than as a personal attack. I understand that constructive criticism is meant to help me improve and develop my skills.</mark></li></ul></li></ol><ol type="1" id="132c3143-6029-48c6-b225-b795faaa4708" class="numbered-list" start="3"><li><mark class="highlight-yellow"><strong>Analyzing the Feedback</strong></mark><mark class="highlight-yellow">:</mark><ul id="d200ed6f-3582-4361-a1c9-0b87d26e10c0" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow">After receiving feedback, I take the time to analyze it thoughtfully. I assess the validity of the points raised and consider how they apply to my work or behavior. This helps me identify areas for improvement and develop actionable steps to address them.</mark></li></ul></li></ol><ol type="1" id="00f351f3-b4df-4bcd-a4f7-a39afb515996" class="numbered-list" start="4"><li><mark class="highlight-yellow"><strong>Seeking Clarification</strong></mark><mark class="highlight-yellow">:</mark><ul id="a0b14d96-09cf-402b-a6d8-563233536b80" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow">If feedback is not clear or if I need more details, I seek clarification to ensure I fully understand the concerns and can address them appropriately. This helps in implementing changes that are aligned with the feedback provided.</mark></li></ul></li></ol><ol type="1" id="190cc818-f180-48d0-ab5a-b0c659c096ab" class="numbered-list" start="5"><li><mark class="highlight-yellow"><strong>Implementing Changes</strong></mark><mark class="highlight-yellow">:</mark><ul id="fc678e15-cfe4-4cda-92cb-1bb21d1251d8" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow">I actively work on applying the feedback to improve my performance. This may involve setting specific goals, adjusting my approach, or seeking additional resources or training to address the areas highlighted.</mark></li></ul></li></ol><ol type="1" id="3f409d23-ecc3-435d-9984-7d74f0cfbf9c" class="numbered-list" start="6"><li><mark class="highlight-yellow"><strong>Following Up</strong></mark><mark class="highlight-yellow">:</mark><ul id="9fb56100-a129-4261-bfa9-4729f0a0a37e" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow">After implementing changes based on feedback, I follow up to review my progress and seek additional input. This demonstrates my commitment to improvement and ensures that the changes are effective.</mark></li></ul></li></ol><ol type="1" id="70d7b18d-b762-45a6-88d1-71ba3493b1f2" class="numbered-list" start="7"><li><mark class="highlight-yellow"><strong>Maintaining a Positive Attitude</strong></mark><mark class="highlight-yellow">:</mark><ul id="83ca2530-7616-4c38-b1fc-72bc20929d5a" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow">I maintain a positive attitude towards feedback and criticism, viewing it as a valuable part of my development process. I appreciate the opportunity to learn and grow from the perspectives of others.</mark></li></ul></li></ol><p id="cb6c119e-0842-44c2-b0c3-5a9a6bf13ff4" class=""><mark class="highlight-yellow">For instance, during a recent project, I received feedback on my presentation style. Initially, it was challenging to hear, but I took it constructively, sought specific suggestions for improvement, and practiced incorporating the feedback into future presentations. This approach led to noticeable improvements and positive outcomes in subsequent presentations.</mark></p><p id="3652206d-0423-4275-8945-a8bb16b9c88c" class=""><mark class="highlight-yellow">Overall, my approach to handling feedback and criticism is focused on growth, learning, and continuous improvement. I believe that embracing feedback helps me enhance my skills and contribute more effectively to my team and projects.&quot;</mark></p></details></li></ul></li></ol><p id="031cef6d-309e-416a-968c-1f68385d1791" class="">
+</p><ol type="1" id="1c73dc4e-8a5d-4098-95c8-be18735ce67b" class="numbered-list" start="5"><li><strong>Are you willing to relocate for the work?</strong></li></ol><ol type="1" id="10d6128d-066d-400f-8b1d-b2e32cb74cf8" class="numbered-list" start="6"><li><strong>Are you planning for masters</strong></li></ol><p id="2edeaca1-bb52-4be2-a807-a206432ddc21" class="">
+</p><h3 id="b14fbd65-1124-4aee-8da9-0c4ebafaa1c0" class="">Technical Questions:</h3><ol type="1" id="3a1f8d50-8c20-48ef-861e-e0d582e5eba7" class="numbered-list" start="1"><li><strong>How do you ensure the ethical use of AI in your projects?</strong><ul id="cc181687-2c73-46ce-af88-d410bb637591" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><strong>Tip</strong></mark></summary><p id="fad6dee4-8d68-4173-a369-971346552e93" class="">Discuss the importance of fairness, transparency, and accountability in AI. Provide examples of how you’ve addressed ethical considerations in your work.</p></details></li></ul></li></ol><ol type="1" id="36a19a3b-3ca4-4396-b827-0d572f7c2d52" class="numbered-list" start="2"><li><strong>What experience do you have with cloud platforms like AWS, Google Cloud, or Azure?</strong><ul id="0f9ecc98-92e4-4893-a54e-df925d70c16c" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><strong>Tip</strong></mark></summary><p id="83fb387a-4c43-4028-96a9-6607bf0980d9" class="">Highlight specific projects where you used these platforms. Discuss the services you used, how you deployed your solutions, and the benefits of using cloud infrastructure.</p></details></li></ul></li></ol><p id="423a519a-4f27-4705-a3b6-119e542017a8" class="">
+</p></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Role-Specific Questions</summary><div class="indented"><ol type="1" id="19e92c0f-de64-40e1-a2d2-1280a32da3cc" class="numbered-list" start="1"><li><strong>Can you describe a project where you translated business requirements into technical solutions?</strong><ul id="cef53f22-899d-4583-a723-2ee5f97db759" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><strong>Tip</strong></mark></summary><p id="3e12eb5a-cd37-42f0-909a-be41f6442875" class="">Provide a specific example, detailing the business requirements, how you translated them for the technical team, and the outcome.</p></details></li></ul></li></ol><ol type="1" id="bfd24cd8-5ebd-4f27-be97-9fb0411c8006" class="numbered-list" start="2"><li><strong>How do you approach creating solution plans for both short-term and long-term projects?</strong><ul id="668a1de8-6c1b-4a41-84e0-a58eb1afb999" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><strong>Tip</strong></mark></summary><p id="cd4a57e2-3379-4ce3-a5c0-a00bc56b7310" class="">Discuss your planning process, how you prioritize tasks, and how you ensure timely execution.</p></details></li></ul></li></ol><ol type="1" id="360efb29-caf4-49fc-9505-68f6e4598d83" class="numbered-list" start="3"><li><strong>Describe a time when you worked closely with a data analytics or decision science team. What was your role and how did you contribute?</strong><ul id="4091ef1b-f1bf-4987-aa42-f365f910c24c" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><strong>Tip</strong></mark></summary><p id="58c3579d-9632-43cc-ad82-e65b10856e4e" class=""> Highlight your collaboration skills, your understanding of data analytics, and the impact of your contributions.</p></details></li></ul></li></ol><ol type="1" id="4ea8f9fa-bff0-4031-b634-55217a91259b" class="numbered-list" start="4"><li><strong>Can you give an example of how you analyzed raw data to find patterns and deliver actionable insights to a client?</strong><ul id="86216894-3af1-4909-98fb-4c93d954daa5" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><strong>Tip</strong></mark></summary><p id="dc26b36f-56a3-4ca9-af41-9080d5196ab6" class="">Use a specific example to show your analytical skills, your ability to interpret data, and how you communicated insights effectively.</p></details></li></ul></li></ol><ol type="1" id="d0951b70-8451-4630-be86-f8a21fae79d3" class="numbered-list" start="5"><li><strong>How do you ensure quality assurance when delivering end-to-end solutions?</strong><ul id="bd47fdce-75e7-49d8-b886-dfd611e4e7b7" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><strong>Tip</strong></mark></summary><p id="7016472e-baf9-41cd-b280-b2cf2d5bbbc9" class="">Explain your QA processes, any tools or methodologies you use, and how you work with technical teams to ensure high-quality deliverables.</p></details></li></ul></li></ol></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Skills and Experience Questions</summary><div class="indented"><ol type="1" id="b553042b-803c-4566-8a94-95388ad9b368" class="numbered-list" start="1"><li><strong>How do you handle situations where you need to deliver technical solutions in business terms to a client?</strong><ul id="17201ed7-3283-4780-a478-8d4aabbd1a19" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><strong>Tip</strong></mark></summary><p id="88052201-ba2b-4283-b8f5-ef0cb2c3e249" class="">Discuss your communication strategies, how you simplify technical concepts, and ensure clients understand the solutions.</p></details></li></ul></li></ol><ol type="1" id="c415c1bd-996c-4958-9d67-69aa4c975cb7" class="numbered-list" start="2"><li><strong>Can you provide an example of a complex problem you solved and the approach you took?</strong><ul id="827559a3-7b7f-40fb-9912-0e6f53b269e1" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><strong>Tip</strong></mark></summary><p id="35059f7d-ca01-4af8-b59c-e7eac9a33669" class="">Highlight your problem-solving process, any critical thinking techniques you used, and the results.</p></details></li></ul></li></ol><ol type="1" id="6958d0a1-0c12-4863-bfce-f27af6054f8c" class="numbered-list" start="3"><li><strong>Describe a time when you had to deal with an unexpected situation in a project. How did you handle it?</strong><ul id="f7ef53cd-09fb-4fe9-acff-f3959d6f706a" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><strong>Tip</strong></mark></summary><p id="960c8ee3-fa6e-4cc6-8c06-650ee585d19c" class="">Focus on your promptness, adaptability, and the steps you took to resolve the situation.</p></details></li></ul></li></ol><ol type="1" id="08fda20a-0968-41a3-890f-1699921c443c" class="numbered-list" start="4"><li><strong>How do you identify hidden relationships in data?</strong><ul id="77592824-3cfd-44ac-9fad-d84f482d7967" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><strong>Tip</strong></mark></summary><p id="1ff78550-193a-49ce-be05-522faea6225a" class="">Explain your approach to data interpretation, any tools or methods you use, and how you ensure accuracy in your findings.</p></details></li></ul></li></ol></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Behavioral and Situational Questions</summary><div class="indented"><ol type="1" id="91a461f8-c06c-46b4-b700-50284edf61c2" class="numbered-list" start="1"><li><strong>How do you manage working with a diverse and proactive team?</strong><ul id="1c3de470-4e32-4dc6-93e6-aceb07f2e15b" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><strong>Tip</strong></mark></summary><p id="1619a6d7-7097-4813-8ae0-03323b71a43a" class="">Discuss your teamwork skills, how you handle different perspectives, and contribute to a positive team dynamic.</p></details></li></ul></li></ol><ol type="1" id="f9500eac-6dbd-4347-9f80-2ec1db23f0e8" class="numbered-list" start="2"><li><strong>Can you describe a situation where you had to travel for work? How did you manage your responsibilities?</strong><ul id="6e195b2d-fb67-4d5b-a812-f2d9368dc307" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><strong>Tip</strong></mark></summary><p id="13478469-fdf7-40ad-8c53-a2f0a4a5fd7d" class="">Provide an example of a business trip, how you prepared for it, and how you ensured your work was not disrupted.</p></details></li></ul></li></ol><ol type="1" id="62cc6ecf-3128-4807-a0af-de82ad978ca2" class="numbered-list" start="3"><li><strong>How do you stay updated with the latest trends in decision science and big data?</strong><ul id="d10930dc-ddce-457c-bd7a-18a9fd2fa2fd" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><strong>Tip</strong></mark></summary><p id="e28e6b9f-6f16-461c-bf7e-8600a8675c66" class="">Mention any resources you use, such as industry publications, courses, or professional networks, and how you apply new knowledge to your work.</p></details></li></ul></li></ol></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Questions to Assess Fit</summary><div class="indented"><ol type="1" id="07d34ec3-e6c6-4c50-ae06-1d4bb6566ed2" class="numbered-list" start="1"><li><strong>Why are you interested in working at Quantiphi?</strong><ul id="445646be-d0bc-40da-b75c-960927445851" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><strong>Tip</strong></mark></summary><p id="6fbf2f63-6934-4f84-a570-95156c41dd14" class="">Relate your interests and career goals to Quantiphi’s mission, culture, and the opportunities the role offers.</p></details></li></ul></li></ol><ol type="1" id="89e92755-c92e-4ab8-bae1-3b6537cc6dc1" class="numbered-list" start="2"><li><strong>How do you handle feedback and criticism?</strong><ul id="dc9665f6-9882-4e95-a415-87098b20035f" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><strong>Tip</strong></mark></summary><p id="5a13c9a9-0532-449c-9500-67889fae68ec" class="">Provide an example that shows you are open to feedback, how you act on it, and how it has helped you improve your work.</p></details></li></ul></li></ol><ol type="1" id="c0a5e9b6-f546-4f60-833c-66164ef5a0f4" class="numbered-list" start="3"><li><strong>What motivates you in your work as a Business Analyst?</strong><ul id="f5946a7e-718f-4b58-bf32-3b7931dfdd6a" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><strong>Tip</strong></mark></summary><p id="30f69b37-e709-4f52-99e3-11e4f9f016e5" class="">Share what drives you, whether it’s solving complex problems, working with data, or delivering value to clients.</p></details></li></ul></li></ol></div></details></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Figures</summary><div class="indented"><ul id="e6b9d724-d2ef-4017-9ffa-4a1931a979b1" class="bulleted-list"><li style="list-style-type:disc">Iphones sold in 2023 -  <strong>over  </strong><code><strong>9 million</strong></code><strong> or </strong><code><strong>90 Lakhs</strong></code><code> </code> </li></ul><ul id="5de9b397-e61e-4f7d-b5d1-28bd6122dc34" class="bulleted-list"><li style="list-style-type:disc">Number of Daily Commuters in Mumbai Locals - <code><strong>7.5 million</strong></code><strong> or </strong><code><strong>75 Lakhs</strong></code><strong> </strong></li></ul><ul id="704d7105-5843-4e6a-b94e-2e09f8a3a630" class="bulleted-list"><li style="list-style-type:disc">Smartphones sold in India in 2023 - <code>164 million</code></li></ul><ul id="34398258-5c72-456c-b531-f8aaf76f63b2" class="bulleted-list"><li style="list-style-type:disc">Number one smartphone brand in 2023 - <code>Samsung</code> <code><strong>17.0%</strong></code><strong> market share, </strong><code><strong>2nd</strong></code><strong>  </strong><code><strong>Vivo 15.2%</strong></code></li></ul><ul id="14380938-4777-4477-9f58-f6019663bc7b" class="bulleted-list"><li style="list-style-type:disc"> Internet users in India - <code><strong>692.0 million</strong></code><strong>  or </strong><code><strong>48.7%</strong></code><strong> </strong></li></ul><ul id="de6e83b8-64e0-4033-a1e3-be67a2036ffd" class="bulleted-list"><li style="list-style-type:disc">UPI user in India -<strong> </strong><code><strong>300 million</strong></code><strong> </strong><code><strong>monthly active</strong></code><strong> </strong></li></ul><ul id="65406edc-1bc2-4f51-bbd4-cefe3e7651e3" class="bulleted-list"><li style="list-style-type:disc">GDP of India - <code>$3.94 Trillion</code> </li></ul><ul id="2f5102d5-9c4a-49b2-a31b-377b9813a547" class="bulleted-list"><li style="list-style-type:disc">GDP per Capita - <code>$2,730</code> or <code>2,29,000 Rs</code> </li></ul><ul id="0a78d6ca-36c1-4604-ac76-e2a25c622cad" class="bulleted-list"><li style="list-style-type:disc">GDP of Maharashtra - <code><strong>$510 billion</strong></code><strong> </strong></li></ul><ul id="e5137c08-676d-4bce-82a8-5ce8c493b060" class="bulleted-list"><li style="list-style-type:disc">GDP per Capita of Maharashtra - <code>$4,000</code> </li></ul><ul id="c4f559b8-877f-4f49-8ccc-b86379854cae" class="bulleted-list"><li style="list-style-type:disc">India’s population - <code>1.4 Billion</code> </li></ul><ul id="9a14ad24-0668-4056-a6e6-e1ed804f2ef4" class="bulleted-list"><li style="list-style-type:disc">World’s Population - <code>8.1 Billion</code> </li></ul><p id="b64857bc-25c6-4944-b0c3-b026f418a74e" class="">
+</p></div></details></div></details><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">Gen-AI &amp; LLM’s</summary><div class="indented"><h3 id="7bbb6bb8-8d66-408c-837f-f9305dc684f1" class="">Generative AI</h3><p id="aa5eb094-7c47-40d7-80b6-35d88eceb324" class=""><strong>Generative AI</strong> refers to a type of artificial intelligence that can create new content. This can include writing text, creating images, making music, and even generating videos. Here’s how it works:</p><ol type="1" id="134cbf00-945b-440f-b0ed-c68d8f39dbf3" class="numbered-list" start="1"><li><strong>Learning from Data</strong>: Generative AI learns by studying a large amount of existing data. For example, to create text, it might read millions of articles, books, and websites.</li></ol><ol type="1" id="564091fe-8700-431d-a0f6-8b47302b92e3" class="numbered-list" start="2"><li><strong>Understanding Patterns</strong>: As it reads through the data, it learns patterns, such as grammar rules, common phrases, and the general flow of sentences.</li></ol><ol type="1" id="87cdd1d3-bd0c-45f5-bd82-3b737d70e0d7" class="numbered-list" start="3"><li><strong>Generating Content</strong>: When you give it a prompt (a piece of text or an idea), it uses what it has learned to create new content that matches the patterns it has seen.</li></ol><p id="01875fef-bb8b-4116-8652-589966029593" class="">Think of it like teaching an art student by showing them thousands of paintings. Eventually, they learn enough to create their own artwork that looks similar to what they’ve seen.</p><h3 id="b7f06809-78c7-4fc2-b690-9f667bce6de6" class="">Large Language Models (LLMs)</h3><p id="0c3297a8-75a8-4afa-bf52-e2162026fd08" class=""><strong>Large Language Models</strong> are a specific type of generative AI focused on understanding and generating text. Here’s what makes them special:</p><ol type="1" id="ca501117-f0bd-47cc-9769-380827450b74" class="numbered-list" start="1"><li><strong>Size</strong>: They are called &quot;large&quot; because they are trained on vast amounts of text data. The more data they train on, the better they get at understanding and generating text.</li></ol><ol type="1" id="4fac8927-20d7-4044-9f5a-9a84b9763ed0" class="numbered-list" start="2"><li><strong>Neural Networks</strong>: They use a type of artificial neural network, which is a computer system modeled after the human brain. This allows them to understand and process language in a sophisticated way.</li></ol><ol type="1" id="a9bd8bf6-c7c0-4e17-881e-344b1c5387e8" class="numbered-list" start="3"><li><strong>Capabilities</strong>: They can do a variety of tasks, such as:<ul id="c0f0a7d4-72ef-48df-bb74-0c6e5e8c8ad1" class="bulleted-list"><li style="list-style-type:disc"><strong>Answering Questions</strong>: You can ask them anything, and they will try to provide a useful answer.</li></ul><ul id="ba5445af-9c81-404f-8af0-e490def3fdec" class="bulleted-list"><li style="list-style-type:disc"><strong>Writing</strong>: They can help you write essays, articles, and even creative stories.</li></ul><ul id="662201ba-d71c-4f35-91de-a1b79c3eb0eb" class="bulleted-list"><li style="list-style-type:disc"><strong>Translating Languages</strong>: They can translate text from one language to another.</li></ul><ul id="cb1fc4e6-5d82-436d-8786-eadd5128bf1b" class="bulleted-list"><li style="list-style-type:disc"><strong>Summarizing</strong>: They can take a long piece of text and summarize it into a shorter version.</li></ul></li></ol><h3 id="99897ee5-ef2b-4a61-8a0e-e8e6d4febf64" class="">How They Work Together</h3><p id="94a4e380-0822-4f0d-9c1c-78dff8f7240a" class="">When you use a tool like ChatGPT (which is based on a Large Language Model), here&#x27;s what happens:</p><ol type="1" id="0c8c1828-9fd8-4fb1-b74d-575efde391a1" class="numbered-list" start="1"><li><strong>Input</strong>: You type in a question or a prompt.</li></ol><ol type="1" id="9f1b3b5a-c4c6-4b42-a87d-dc1c6cf423d9" class="numbered-list" start="2"><li><strong>Processing</strong>: The AI processes your input using the patterns and information it has learned from the vast amount of text it was trained on.</li></ol><ol type="1" id="8fb892eb-845c-49f7-bc5c-4771617b376e" class="numbered-list" start="3"><li><strong>Output</strong>: It generates a response that makes sense based on what it has learned.</li></ol><h3 id="5039c3c1-7eda-49b6-98c1-9acba6b96d21" class="">Why It’s Important</h3><p id="b9fb469b-f283-4f0b-9aa8-798a4a66a5ac" class="">Generative AI and LLMs are important because they can help automate and enhance many tasks that involve language. This can save time, improve productivity, and even provide new ways to be creative.</p><h3 id="5be57f18-6ef7-450c-81e9-f2a9f5adbc81" class="">Example</h3><p id="7cce1712-5cc3-4514-9c70-c5572699decf" class="">If you asked a Large Language Model, &quot;Can you help me write a story about a space adventure?&quot; it would generate a story based on all the space adventure stories it has learned from. It might start like this:</p><p id="66d234cf-c5b5-495a-b880-ab00014e891d" class="">&quot;Once upon a time, in a galaxy far, far away, a brave astronaut named Alex set off on a journey to explore the unknown planets...&quot;</p><p id="53ad67f3-faf3-40cb-b2cd-0ac8636f6943" class="">In summary, generative AI and Large Language Models are powerful tools that learn from huge amounts of data to create new content, making them incredibly useful for a wide range of applications.</p><p id="b378cbda-d80f-4188-ac84-c2d053e1898b" class="">
+</p><h2 id="aa652afc-56c2-465c-a660-f24ad064c0ad" class="">How do LLMs work, how is chat gpt working ?</h2><p id="fb2d0118-d99e-4ed1-8b49-d01178c3d58b" class="">Large Language Models (LLMs), such as those behind ChatGPT, operate through a series of steps involving data processing, learning, and text generation. Here&#x27;s a simplified breakdown of how they work:</p><h3 id="d9f47bc5-a6eb-4e1a-8ccb-c4f6e9b54162" class="">1. Training Phase</h3><p id="0021f13f-6a13-4f15-a0de-e79407afd1e9" class=""><strong>Data Collection</strong>:</p><ul id="3de19486-4487-427c-ac3a-eedb16e90f7f" class="bulleted-list"><li style="list-style-type:disc">LLMs are trained on a vast amount of text data, which can include books, articles, websites, and more.</li></ul><ul id="d0dce848-47a8-4b67-bdee-98463c842e5f" class="bulleted-list"><li style="list-style-type:disc">This data is used to teach the model the structure and patterns of human language.</li></ul><p id="df20d1c7-984f-444b-8654-f59d8d594e72" class=""><strong>Tokenization</strong>:</p><ul id="d63dbb2c-c17b-44c6-bec4-ee30cd2f4c1c" class="bulleted-list"><li style="list-style-type:disc">The text data is broken down into smaller pieces called tokens. Tokens can be words, subwords, or even individual characters.</li></ul><ul id="98860da5-cb69-4b73-afbb-2610bf5ae18c" class="bulleted-list"><li style="list-style-type:disc">For example, the sentence &quot;ChatGPT is amazing!&quot; might be tokenized into [&quot;Chat&quot;, &quot;GPT&quot;, &quot;is&quot;, &quot;amazing&quot;, &quot;!&quot;].</li></ul><p id="54118376-41c9-4648-827b-6064df634f25" class=""><strong>Neural Network</strong>:</p><ul id="c3dcb3a5-0510-456c-9a84-95dc29ab04dd" class="bulleted-list"><li style="list-style-type:disc">The core of an LLM is a neural network, specifically a type called a Transformer.</li></ul><ul id="d1d7ad72-9f44-46b6-9646-87a7928eb836" class="bulleted-list"><li style="list-style-type:disc">Transformers are designed to handle the sequential nature of language by using mechanisms called attention to focus on different parts of the input text when generating output.</li></ul><p id="da94e143-1ad3-43b6-8ffb-37fcfcf297c2" class=""><strong>Training</strong>:</p><ul id="b09b129f-d0e6-4dc5-9994-10753eeae707" class="bulleted-list"><li style="list-style-type:disc">The model is trained to predict the next token in a sequence given the previous tokens. This involves a process called supervised learning, where the model adjusts its internal parameters to minimize prediction errors.</li></ul><ul id="63ee5e8f-5bd0-4966-aa05-e7c6056ba05d" class="bulleted-list"><li style="list-style-type:disc">The training process requires significant computational power and time, often using specialized hardware like GPUs or TPUs.</li></ul><h3 id="0163aca4-5d48-44fb-b93f-ecf9918b2fab" class="">2. Inference Phase (How ChatGPT Works)</h3><p id="be1c345b-b06e-434c-b4ba-c9f93482e1d8" class=""><strong>Input</strong>:</p><ul id="1ccda0d8-a661-4d67-a1c3-b85319c1b19a" class="bulleted-list"><li style="list-style-type:disc">When you interact with ChatGPT, you provide it with an input prompt, which is a sequence of text.</li></ul><p id="1b269e6a-c435-45b4-b1ae-538566cd4293" class=""><strong>Context Understanding</strong>:</p><ul id="327a53f3-4df5-4ef1-b69f-6e6bc91aefe9" class="bulleted-list"><li style="list-style-type:disc">The model processes the input to understand the context and relevant patterns. It uses the attention mechanism to focus on important parts of the input.</li></ul><p id="b750035b-fae2-4fd2-928b-87ffd4d25e70" class=""><strong>Token Prediction</strong>:</p><ul id="fb07e8e8-6ee9-453a-b079-e39aa7e4c0a9" class="bulleted-list"><li style="list-style-type:disc">The model generates text one token at a time. For each token, it predicts the most likely next token based on the input and previously generated tokens.</li></ul><ul id="6fe3aa8b-d494-4de6-9558-f95a97db1b6f" class="bulleted-list"><li style="list-style-type:disc">This prediction is probabilistic, meaning the model calculates the probabilities of various possible tokens and typically selects the one with the highest probability.</li></ul><p id="a0522456-ad99-4045-93f7-9d3cd60f9a1f" class=""><strong>Text Generation</strong>:</p><ul id="9b9932db-6c03-46a7-b803-c4b1d17c4b18" class="bulleted-list"><li style="list-style-type:disc">This process repeats, with each newly generated token being fed back into the model as part of the input for the next prediction.</li></ul><ul id="41d26907-0624-44bf-9871-1c130e49d827" class="bulleted-list"><li style="list-style-type:disc">The model continues generating tokens until it reaches a specified stopping condition, such as generating a complete sentence or paragraph.</li></ul><p id="dce83802-dc67-4ec0-9fd9-0cd8442eac8f" class=""><strong>Output</strong>:</p><ul id="3d157a5e-f11a-45de-9e33-8289b6f0f46e" class="bulleted-list"><li style="list-style-type:disc">The sequence of tokens is combined to form the final output text, which is presented to you as the response.</li></ul><h3 id="d4c9d991-cfb5-4cb8-888c-4e9bc481bdb4" class="">Key Components</h3><p id="4f06ce45-ec0b-43d6-9516-3d6c9631f043" class=""><strong>Attention Mechanism</strong>:</p><ul id="ab7e4d08-3df1-4ad0-975a-d0c73d29fbf9" class="bulleted-list"><li style="list-style-type:disc">This allows the model to weigh the importance of different parts of the input when generating each token, helping it to handle long-range dependencies in text.</li></ul><p id="e42deae4-5de1-43f1-a1de-f01b231f60e6" class=""><strong>Layers and Parameters</strong>:</p><ul id="e510a09f-5cb9-4e1b-994b-ec8452c25eb0" class="bulleted-list"><li style="list-style-type:disc">LLMs consist of many layers of neural networks, each with millions or even billions of parameters. These parameters are adjusted during training to improve the model&#x27;s performance.</li></ul><p id="2d42a01b-e375-43ba-8aef-42f422dc342c" class=""><strong>Fine-Tuning</strong>:</p><ul id="175bbe26-edf1-45a9-b27c-daca42b1d121" class="bulleted-list"><li style="list-style-type:disc">After initial training, models like ChatGPT can be fine-tuned on specific datasets to improve their performance on particular tasks or domains.</li></ul><h3 id="e3adfb79-20e9-4152-8e2c-e7a9971726dd" class="">Example Walkthrough</h3><p id="14503a8d-fc6d-4432-bc96-ac668d242582" class="">Let&#x27;s say you ask ChatGPT: &quot;Tell me a story about a heroic cat.&quot;</p><ol type="1" id="5aebc61f-c832-4260-9cbc-157979fb9b1a" class="numbered-list" start="1"><li><strong>Input</strong>: &quot;Tell me a story about a heroic cat.&quot;</li></ol><ol type="1" id="bacce84c-24a3-41c7-b9d9-081eed3e5e3a" class="numbered-list" start="2"><li><strong>Tokenization</strong>: [&quot;Tell&quot;, &quot;me&quot;, &quot;a&quot;, &quot;story&quot;, &quot;about&quot;, &quot;a&quot;, &quot;heroic&quot;, &quot;cat&quot;, &quot;.&quot;]</li></ol><ol type="1" id="406322c5-f776-4aad-9b60-929da97e335b" class="numbered-list" start="3"><li><strong>Context Understanding</strong>: The model processes this input and recognizes the request for a story.</li></ol><ol type="1" id="a947ef37-22f2-4060-86e2-2aa3df46a736" class="numbered-list" start="4"><li><strong>Token Prediction</strong>:<ul id="7a34fc6e-2ac9-44d9-affd-81c81ea5d859" class="bulleted-list"><li style="list-style-type:disc">The model predicts the next token based on the input. Let&#x27;s say it predicts &quot;Once&quot;.</li></ul><ul id="ef5e50ee-58ba-4b86-9613-1d5fc010d705" class="bulleted-list"><li style="list-style-type:disc">Then, it predicts the next token after &quot;Once&quot;. Suppose it predicts &quot;upon&quot;.</li></ul><ul id="03f19486-7fda-4bcc-b9a8-03d6bd218883" class="bulleted-list"><li style="list-style-type:disc">This process continues: &quot;Once upon a time, there was a brave cat named Whiskers...&quot;</li></ul></li></ol><ol type="1" id="5470b0e1-758c-46ab-94e9-fff55922b1ba" class="numbered-list" start="5"><li><strong>Output</strong>: The generated text is combined and returned as the response.</li></ol><h3 id="de5aa8f6-3354-4b71-8046-9dd08cbb8144" class="">Why LLMs are Powerful</h3><p id="e4311a48-f976-41cc-8e98-f3a13fb8d1f5" class=""><strong>Versatility</strong>: They can handle a wide range of tasks, from answering questions to generating creative content.</p><p id="30356331-d1ef-4b6d-9395-2c41fe7332c6" class=""><strong>Learning from Vast Data</strong>: They can understand and generate text based on patterns learned from extensive training data.</p><p id="aaf4abe7-9789-44cf-97ca-fff7f38bca83" class=""><strong>Contextual Understanding</strong>: They can maintain context over longer passages of text, making their responses coherent and contextually appropriate.</p><p id="65cb9d12-d57d-4463-9e60-109b0476dc00" class="">In summary, large language models like ChatGPT work by learning from vast amounts of text data, predicting tokens to generate text, and using sophisticated neural network architectures to understand and respond to human language in a natural and coherent manner.</p></div></details><p id="f4da64be-83e4-4186-9acd-3612645f68fa" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
